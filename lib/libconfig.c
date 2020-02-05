@@ -691,7 +691,7 @@ int config_write_file(config_t *config, const char *filename)
   }
 
   config_write(config, stream);
-
+#ifndef _arch_dreamcast
   if(config_get_option(config, CONFIG_OPTION_FSYNC))
   {
     int fd = fileno(stream);
@@ -707,7 +707,7 @@ int config_write_file(config_t *config, const char *filename)
       }
     }
   }
-
+#endif
   fclose(stream);
   config->error_type = CONFIG_ERR_NONE;
   return(CONFIG_TRUE);

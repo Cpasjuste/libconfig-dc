@@ -628,7 +628,11 @@ void tt_fail(const char *file, int line, const char *message, ...)
 
 tt_bool_t tt_file_exists(const char *file)
 {
+#ifdef _arch_dreamcast
+  return 0;
+#else
   return(access(file, F_OK) == 0);
+#endif
 }
 
 #ifdef _MSC_VER
